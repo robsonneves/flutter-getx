@@ -1,3 +1,4 @@
+import 'package:flutter_getx/src/pages/base_screen.dart';
 import 'package:flutter_getx/src/pages/sign_in_screen.dart';
 import 'package:flutter_getx/src/pages/sign_up_screen.dart';
 import 'package:get/get.dart';
@@ -5,11 +6,15 @@ import 'package:get/get.dart';
 abstract class Routes {
   static final pages = <GetPage>[
     GetPage(
+      page: () => const BaseScreen(),
+      name: PagesRoutes.baseRoute,
+    ),
+    GetPage(
       page: () => const SignInScreen(),
       name: PagesRoutes.signinRoute,
     ),
     GetPage(
-      page: () => const SignUpScreen(),
+      page: () => SignUpScreen(),
       name: PagesRoutes.signupRoute,
     ),
   ];
