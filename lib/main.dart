@@ -30,7 +30,6 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: PagesRoutes.signinRoute,
-      //home: const ResponsiveAppBar(),
       getPages: Routes.pages,
     );
   }

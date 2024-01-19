@@ -38,6 +38,7 @@ dependencies:
   responsive_framework: ^1.1.1
   get: ^4.6.6
   mask_text_input_formatter: ^2.8.0
+  syncfusion_flutter_calendar: ^24.1.46
 
 dev_dependencies:
   flutter_test:
