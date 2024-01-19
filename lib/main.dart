@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/src/pages/sign_in_screen.dart';
+import 'package:flutter_getx/src/routes/routes.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,13 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter GetX',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
       debugShowCheckedModeBanner: true,
-      home: const SignInScreen(),
+      initialRoute: PagesRoutes.signinRoute,
+      getPages: Routes.pages,
     );
   }
 }
