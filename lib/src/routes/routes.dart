@@ -1,6 +1,8 @@
+import 'package:flutter_getx/src/binding/home_binding.dart';
 import 'package:flutter_getx/src/pages/base_screen.dart';
-import 'package:flutter_getx/src/pages/calendar.dart';
-import 'package:flutter_getx/src/pages/home.dart';
+import 'package:flutter_getx/src/pages/calendar_screen.dart';
+import 'package:flutter_getx/src/pages/day_screen.dart';
+import 'package:flutter_getx/src/pages/home_screen.dart';
 import 'package:flutter_getx/src/pages/sign_in_screen.dart';
 import 'package:flutter_getx/src/pages/sign_up_screen.dart';
 import 'package:get/get.dart';
@@ -12,7 +14,7 @@ abstract class Routes {
       name: PagesRoutes.baseRoute,
     ),
     GetPage(
-      page: () => const SignInScreen(),
+      page: () => SignInScreen(),
       name: PagesRoutes.signinRoute,
     ),
     GetPage(
@@ -20,12 +22,19 @@ abstract class Routes {
       name: PagesRoutes.signupRoute,
     ),
     GetPage(
-      page: () => Home(),
+      page: () => HomeScreen(),
       name: PagesRoutes.homeRoute,
+      bindings: [
+        HomeBiding(),
+      ],
     ),
     GetPage(
-      page: () => const Calendar(),
+      page: () => const CalendarScreen(),
       name: PagesRoutes.calanderRoute,
+    ),
+    GetPage(
+      page: () => const DayScreen(),
+      name: PagesRoutes.dayRoute,
     ),
   ];
 }
@@ -36,4 +45,5 @@ abstract class PagesRoutes {
   static const String signupRoute = '/signupscreen';
   static const String homeRoute = '/home';
   static const String calanderRoute = '/calanderRoute';
+  static const String dayRoute = '/dayRoute/:day';
 }

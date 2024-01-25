@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/src/controllers/home_controller.dart';
 
-import '../controllers/value_controller.dart';
-
-class Home extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   final textController = TextEditingController();
-  final valueController = ValueController();
 
-  Home({super.key});
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,7 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // txt
-            Text('Valor definido ${valueController.defineValue}'),
+            const Text('Valor definido ...'),
 
             // Campo
             TextField(
@@ -28,7 +26,6 @@ class Home extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 String value = textController.text;
-                valueController.defineValue = value;
               },
               child: const Text("Confirmar"),
             ),

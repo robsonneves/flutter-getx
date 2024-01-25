@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/src/controllers/auth_controller.dart';
 import 'package:flutter_getx/src/routes/routes.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
+  Get.put(AuthController());
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   get ResponsiveWrapper => null;
 
@@ -16,6 +20,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter GetX',
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: const [Locale('pt', 'BR')],
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),

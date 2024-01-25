@@ -1,25 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/src/routes/routes.dart';
+import 'package:get/get.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-class Calendar extends StatefulWidget {
-  const Calendar({super.key});
+class CalendarScreen extends StatefulWidget {
+  const CalendarScreen({super.key});
 
   @override
-  State<Calendar> createState() => _MyWidgetState();
+  State<CalendarScreen> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<Calendar> {
+class _MyWidgetState extends State<CalendarScreen> {
   @override
   Widget build(BuildContext context) {
+    final desktop = ResponsiveBreakpoints.of(context).isDesktop;
+
     return Scaffold(
+      appBar: AppBar(),
       body: Padding(
-        padding: const EdgeInsets.all(100),
+        padding: EdgeInsets.all(desktop ? 100 : 30),
         child: SfCalendar(
           view: CalendarView.month,
+          onTap: (CalendarTapDetails details) {
+            // dynamic appointment = details.appointments;
+            //CalendarElement element = details.targetElement;
+
+            DateTime date = details.date!;
+            String dta = '${date.day}-${date.month}-${date.year}';
+            Get.toNamed("/dayRoute/$dta");
+          },
           dataSource: MeetingDataSource(_getDataSource()),
-          // by default the month appointment display mode set as Indicator, we can
-          // change the display mode as appointment using the appointment display
-          // mode property
           monthViewSettings: const MonthViewSettings(
               appointmentDisplayMode: MonthAppointmentDisplayMode.appointment),
         ),
@@ -31,9 +42,17 @@ class _MyWidgetState extends State<Calendar> {
     final List<Meeting> meetings = <Meeting>[];
     final DateTime today = DateTime.now();
     final DateTime startTime = DateTime(today.year, today.month, today.day, 9);
+    final DateTime startTime2 =
+        DateTime(today.year, today.month, today.day + 3, 9);
+    final DateTime startTime3 =
+        DateTime(today.year, today.month, today.day + 5, 9);
     final DateTime endTime = startTime.add(const Duration(hours: 2));
-    meetings.add(Meeting(
-        'Conference', startTime, endTime, const Color(0xFF0F8644), false));
+    meetings.add(Meeting('Beto', startTime, endTime,
+        const Color.fromARGB(255, 15, 134, 68), false));
+    meetings.add(Meeting('Cascanéia', startTime2, endTime,
+        const Color.fromARGB(255, 15, 61, 134), false));
+    meetings.add(Meeting('InterPraias', startTime3, endTime,
+        const Color.fromARGB(255, 134, 122, 15), false));
     return meetings;
   }
 }
