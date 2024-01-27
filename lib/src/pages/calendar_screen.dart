@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/src/routes/routes.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
@@ -42,11 +41,19 @@ class _MyWidgetState extends State<CalendarScreen> {
     final List<Meeting> meetings = <Meeting>[];
     final DateTime today = DateTime.now();
     final DateTime startTime = DateTime(today.year, today.month, today.day, 9);
+    final DateTime startTime0 =
+        DateTime(today.year, today.month, today.day - 1, 9);
     final DateTime startTime2 =
         DateTime(today.year, today.month, today.day + 3, 9);
     final DateTime startTime3 =
         DateTime(today.year, today.month, today.day + 5, 9);
     final DateTime endTime = startTime.add(const Duration(hours: 2));
+    meetings.add(Meeting('Beto', startTime0, startTime0,
+        const Color.fromARGB(255, 134, 15, 15), false));
+    meetings.add(Meeting('Cascanéia', startTime0, startTime0,
+        const Color.fromARGB(255, 134, 15, 15), false));
+    meetings.add(Meeting('InterPraias', startTime0, startTime0,
+        const Color.fromARGB(255, 134, 15, 15), false));
     meetings.add(Meeting('Beto', startTime, endTime,
         const Color.fromARGB(255, 15, 134, 68), false));
     meetings.add(Meeting('Cascanéia', startTime2, endTime,

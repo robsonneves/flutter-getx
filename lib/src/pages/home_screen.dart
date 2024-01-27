@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/src/controllers/home_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   final textController = TextEditingController();

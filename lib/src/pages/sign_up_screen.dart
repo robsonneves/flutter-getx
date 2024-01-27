@@ -7,7 +7,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'components/custom_text_field.dart';
 
 class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+  SignUpScreen({super.key});
 
   final cpfFormater = MaskTextInputFormatter(
     mask: '###.###.###-##',

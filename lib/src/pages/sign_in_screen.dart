@@ -117,7 +117,10 @@ class SignInScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(18),
                                   ),
                                 ),
-                                onPressed: authController.isLoading.value
+                                onPressed: () {
+                                  Get.toNamed(PagesRoutes.baseRoute);
+                                },
+                                /*onPressed: authController.isLoading.value
                                     ? null
                                     : () {
                                         FocusScope.of(context).unfocus();
@@ -132,7 +135,7 @@ class SignInScreen extends StatelessWidget {
                                           );
                                         } else {}
                                         //Get.toNamed(PagesRoutes.baseRoute);
-                                      },
+                                      },*/
                                 child: authController.isLoading.value
                                     ? const CircularProgressIndicator()
                                     : const Text(
