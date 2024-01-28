@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/src/model/line_table.dart';
+import 'package:flutter_getx/src/model/table_model.dart';
 import 'package:flutter_getx/src/pages/components/data_table_app.dart';
+import 'package:responsive_framework/responsive_breakpoints.dart';
 
 class ListTileApp extends StatelessWidget {
   const ListTileApp({
     super.key,
-    required this.title,
     required this.itens,
   });
 
-  final String title;
-  final List<LineTableModel> itens;
+  final List<TableModel> itens;
 
   @override
   Widget build(BuildContext context) {
+    final desktop = ResponsiveBreakpoints.of(context).isDesktop;
+    List<ListTile> allListTile = itens.map((item) {
+      return ListTile(
+        subtitle: DataTableApp(myTitle: item.name, itens: item.value),
+      );
+    }).toList();
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -26,18 +32,10 @@ class ListTileApp extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(12)),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(desktop ? 5 : 20),
             child: ListView(
               children: <Widget>[
-                ListTile(
-                  leading: const CircleAvatar(child: Text('A')),
-                  title: Text(title),
-                  subtitle: DataTableApp(itens: itens),
-                  //subtitle: const Text(
-                  //  'Supporting text \n\n Supporting text \n\n Supporting text '),
-                  trailing: const Icon(Icons.favorite_rounded),
-                ),
-                const Divider(height: 0),
+                ...allListTile,
               ],
             ),
           ),

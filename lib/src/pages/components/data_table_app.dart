@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/src/model/line_table.dart';
 
 class DataTableApp extends StatelessWidget {
   const DataTableApp({
     super.key,
     required this.itens,
+    required this.myTitle,
   });
 
-  final List<LineTableModel> itens;
+  final List<dynamic> itens;
+  final String myTitle;
 
   @override
   Widget build(BuildContext context) {
-    List<DataRow> allRows = itens.map((item) {
+    List<DataRow>? allRows = itens.map((item) {
       return DataRow(
+        color: item.rowColor != null
+            ? MaterialStateColor.resolveWith((states) => item.rowColor)
+            : null,
         cells: <DataCell>[
           DataCell(Text(item.name)),
           DataCell(Text(item.value.toString())),
@@ -21,21 +25,19 @@ class DataTableApp extends StatelessWidget {
     }).toList();
 
     return DataTable(
-      columns: const <DataColumn>[
+      headingRowColor: MaterialStateColor.resolveWith((states) => Colors.green),
+      columns: <DataColumn>[
         DataColumn(
-          label: Expanded(
-            child: Text(
-              '',
-              style: TextStyle(fontStyle: FontStyle.italic),
-            ),
+          label: Text(
+            myTitle,
+            style: const TextStyle(
+                fontStyle: FontStyle.italic, color: Colors.white),
           ),
         ),
-        DataColumn(
-          label: Expanded(
-            child: Text(
-              '',
-              style: TextStyle(fontStyle: FontStyle.italic),
-            ),
+        const DataColumn(
+          label: Text(
+            "",
+            style: TextStyle(fontStyle: FontStyle.italic),
           ),
         ),
       ],
