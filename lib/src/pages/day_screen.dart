@@ -150,15 +150,16 @@ class DayScreen extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () => Get.back(),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.green,
           title: Text(
             dta!,
             style: const TextStyle(
               color: Colors.white,
-            ),
-          ),
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              color: Colors.green,
             ),
           ),
         ),

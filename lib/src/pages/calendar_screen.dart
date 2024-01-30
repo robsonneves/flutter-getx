@@ -16,7 +16,18 @@ class _MyWidgetState extends State<CalendarScreen> {
     final desktop = ResponsiveBreakpoints.of(context).isDesktop;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        title: const Text(
+          'Calendário',
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Get.back(),
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.all(desktop ? 100 : 30),
         child: SfCalendar(
